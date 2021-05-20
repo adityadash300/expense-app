@@ -7,6 +7,7 @@ module.exports = merge(webpackCommon, {
     devtool: 'eval-cheap-module-source-map',
     devServer: {
         contentBase: path.join(__dirname, 'public'),
+        publicPath: '/dist/',
         historyApiFallback: true
     },
     module: {

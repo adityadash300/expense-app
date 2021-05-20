@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
+  "engines": {
+    "node": "15.14.0"
+  },
   "scripts": {
     "start": "node server/server.js",
     "heroku-postbuild": "npm run build:prod",

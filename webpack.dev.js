@@ -4,9 +4,21 @@ const path = require('path')
 
 module.exports = merge(webpackCommon, {
     mode: 'development',
-    devtool: 'eval-nosources-cheap-module-source-map',
+    devtool: 'eval-cheap-module-source-map',
     devServer: {
         contentBase: path.join(__dirname, 'public'),
         historyApiFallback: true
+    },
+    module: {
+        rules: [
+            {
+                test: /\.s?css$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            }
+        ]
     }
 })

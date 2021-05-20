@@ -12,10 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "moment": "^2.29.1",
-    "uuid": "^3.4.0"
-  },
-  "devDependencies": {
     "@babel/core": "^7.14.2",
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
@@ -24,26 +20,30 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^5.2.4",
-    "enzyme": "^3.11.0",
-    "enzyme-to-json": "^3.6.2",
-    "html-webpack-plugin": "^5.3.1",
-    "jest": "^26.6.3",
+    "mini-css-extract-plugin": "^1.6.0",
+    "moment": "^2.29.1",
     "node-sass": "^6.0.0",
     "normalize.css": "^8.0.1",
-    "raf": "^3.4.1",
     "react": "^17.0.2",
     "react-dates": "^21.8.0",
     "react-dom": "^17.0.2",
     "react-modal": "^3.13.1",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
-    "react-test-renderer": "^17.0.2",
     "redux": "^4.1.0",
     "sass-loader": "^11.1.1",
     "style-loader": "^2.0.0",
+    "uuid": "^3.4.0",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3"
+  },
+  "devDependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2",
+    "jest": "^26.6.3",
+    "raf": "^3.4.1",
+    "react-test-renderer": "^17.0.2",
+    "webpack-dev-server": "^3.11.2"
   }
 }

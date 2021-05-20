@@ -10,7 +10,7 @@
     "start": "node server/server.js",
     "heroku-postbuild": "npm run build:prod",
     "build:prod": "webpack --config webpack.prod.js",
-    "build:dev": "webpack serve --config webpack.dev.js",
+    "build:dev": "env-cmd -f ./config/dev.env webpack serve --config webpack.dev.js",
     "test": "jest --watchAll --config=jest.config.json"
   },
   "keywords": [],
@@ -47,6 +47,7 @@
     "webpack-merge": "^5.7.3"
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.2",
     "jest": "^26.6.3",

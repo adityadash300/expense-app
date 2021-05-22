@@ -34,7 +34,6 @@ const requireAuthenticaion = (WrappedComponent) => {
         </div>
     )
 }
-
 const AdminInfo = withAdminWarning(Info)
 const AuthInfo = requireAuthenticaion(Info)
 

@@ -16,7 +16,6 @@ export default class ExpenseForm extends React.Component {
     }
 
     onTextChange = (e) => {
-        console.log(this.props)
         const text = e.target.value
         e.target.name === 'note' ? (
             this.setState(() => ({ note: text }))

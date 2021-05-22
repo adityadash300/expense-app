@@ -1,16 +1,25 @@
-import uuid from "uuid"
+import database from "../firebase/firebase"
 
 // Add Expense
-export const addExpense = ({ description = '', note = '', amount = 0, createdAt = 0 } = {}) => ({
+export const addExpense = (expense) => ({
     type: 'ADD_EXPENSE',
-    expense: {
-        id: uuid(),
-        description,
-        note,
-        amount,
-        createdAt
-    }
+    expense
 })
+
+export const startAddExpense = ({ description = '', note = '', amount = 0, createdAt = 0 } = {}) => {
+    return async (dispatch) => {
+        const expense = { description, note, amount, createdAt }
+        try {
+            const ref = await database.ref('expenses').push(expense)
+            dispatch(addExpense({
+                id: ref.key,
+                ...expense
+            }))
+        } catch (error) {
+            console.log('Could not connect to database', error)
+        }
+    }
+}
 
 // Remove Expense
 export const removeExpense = ({ id } = {}) => ({

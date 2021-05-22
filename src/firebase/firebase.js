@@ -12,10 +12,6 @@ const firebaseConfig = {
 	measurementId: process.env.FIREBASE_MEASUREMENT_ID
 }
 
-for(const [key, val] of Object.entries(firebaseConfig)) {
-	console.log(`${key} : ${val}`)
-}
-
 firebase.initializeApp(firebaseConfig)
 
 const database = firebase.database()

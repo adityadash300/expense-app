@@ -32,13 +32,13 @@ export const startSetExpenses = () => {
     return async dispatch => {
         try {
             const snapshot = await database.ref('expenses').once('value')
-        snapshot.forEach((childSnapshot) => {
-            expenses.push({
-                id: childSnapshot.key,
-                ...childSnapshot.val()
+            snapshot.forEach((childSnapshot) => {
+                expenses.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                })
             })
-        })
-        dispatch(setExpenses(expenses))
+            dispatch(setExpenses(expenses))
         } catch (error) {
             console.log(error)
         }
@@ -69,3 +69,13 @@ export const editExpense = (id, updates) => ({
     updates
 })
 
+export const startEditExpense = (id, updates) => {
+    return async dispatch => {
+        try {
+            await database.ref(`expenses/${id}`).update(updates)
+            dispatch(editExpense(id, updates))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}

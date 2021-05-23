@@ -7,10 +7,11 @@ export const addExpense = (expense) => ({
 })
 
 export const startAddExpense = ({ description = '', note = '', amount = 0, createdAt = 0 } = {}) => {
-    return async dispatch => {
+    return async (dispatch, getState) => {
+        const uid = getState().auth.uid
         const expense = { description, note, amount, createdAt }
         try {
-            const ref = await database.ref('expenses').push(expense)
+            const ref = await database.ref(`users/${uid}/expenses`).push(expense)
             dispatch(addExpense({
                 id: ref.key,
                 ...expense
@@ -29,9 +30,10 @@ export const setExpenses = (expenses) => ({
 
 export const startSetExpenses = () => {
     const expenses = []
-    return async dispatch => {
+    return async (dispatch, getState) => {
+        const uid = getState().auth.uid
         try {
-            const snapshot = await database.ref('expenses').once('value')
+            const snapshot = await database.ref(`users/${uid}/expenses`).once('value')
             snapshot.forEach((childSnapshot) => {
                 expenses.push({
                     id: childSnapshot.key,
@@ -52,9 +54,10 @@ export const removeExpense = ({ id }) => ({
 })
 
 export const startRemoveExpense = ({ id } = {}) => {
-    return async dispatch => {
+    return async (dispatch, getState) => {
+        const uid = getState().auth.uid
         try {
-            await database.ref(`expenses/${id}`).remove()
+            await database.ref(`users/${uid}/expenses/${id}`).remove()
             dispatch(removeExpense({ id }))
         } catch (error) {
             console.log(error)
@@ -70,9 +73,10 @@ export const editExpense = (id, updates) => ({
 })
 
 export const startEditExpense = (id, updates) => {
-    return async dispatch => {
+    return async (dispatch, getState) => {
+        const uid = getState().auth.uid
         try {
-            await database.ref(`expenses/${id}`).update(updates)
+            await database.ref(`users/${uid}/expenses/${id}`).update(updates)
             dispatch(editExpense(id, updates))
         } catch (error) {
             console.log(error)

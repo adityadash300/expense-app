@@ -10,7 +10,7 @@ if(process.env.NODE_ENV === 'test') {
 }
 
 module.exports = {
-    entry: ['./src/app.js'],
+    entry: ['@babel/polyfill', './src/app.js'],
     output: {
         path: path.join(__dirname, 'public', 'dist'),
         filename: 'bundle.js'
@@ -27,6 +27,13 @@ module.exports = {
                         plugins: ['babel-plugin-transform-class-properties']
                     }
                 }   
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/,
+                loader: 'file-loader',
+                options: {
+                  outputPath: 'public/images',
+                },
             }
         ]   
     },

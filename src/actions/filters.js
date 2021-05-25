@@ -16,13 +16,13 @@ export const sortByAmount = () => ({
 
 
 // Set start date
-export const setStartDate = (startDate) => ({
+export const setStartDate = (startDate = moment().startOf('month')) => ({
     type:'SET_START_DATE',
     startDate
 })
 
 // Set end date
-export const setEndDate = (endDate) => ({
+export const setEndDate = (endDate = moment().endOf('month')) => ({
     type: 'SET_END_DATE',
     endDate
 })

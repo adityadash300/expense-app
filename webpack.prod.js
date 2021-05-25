@@ -20,6 +20,7 @@ module.exports = merge(webpackCommon, {
                             sourceMap: true
                         }
                     },
+                    'resolve-url-loader',
                     {
                         loader: 'sass-loader',
                         options: {

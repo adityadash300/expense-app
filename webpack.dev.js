@@ -16,9 +16,16 @@ module.exports = merge(webpackCommon, {
                 test: /\.s?css$/,
                 use: [
                     'style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ]
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    },
+                    'resolve-url-loader',
+                    'sass-loader',
+                ],
+                // include: path.resolve(__dirname, '../../public/')
             }
         ]
     }

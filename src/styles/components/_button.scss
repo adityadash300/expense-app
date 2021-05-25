@@ -17,3 +17,8 @@
 .button--secondary {
     background: #888;
 }
+
+.button--login {
+    background: darken(white, $amount: 4.5);
+    color: black;
+}

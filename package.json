@@ -7,7 +7,7 @@
     "node": "15.14.0"
   },
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node index.js",
     "heroku-postbuild": "npm run build:prod",
     "build:prod": "webpack --config webpack.prod.js",
     "build:dev": " webpack serve --config webpack.dev.js",
